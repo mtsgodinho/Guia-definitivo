@@ -1,5 +1,5 @@
 
-import { Benefit, FAQItem, Testimonial } from './types';
+import { Benefit, FAQItem, Testimonial } from './types.ts';
 
 export const TESTIMONIALS: Testimonial[] = [
   {

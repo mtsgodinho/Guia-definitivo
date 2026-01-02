@@ -1,13 +1,16 @@
 
 import React from 'react';
-import CountdownTimer from './components/CountdownTimer';
-import CTAButton from './components/CTAButton';
-import FreedomChat from './components/FreedomChat';
-import { TESTIMONIALS, BENEFITS, FAQS } from './constants';
+import CountdownTimer from './components/CountdownTimer.tsx';
+import CTAButton from './components/CTAButton.tsx';
+import FreedomChat from './components/FreedomChat.tsx';
+import { TESTIMONIALS, BENEFITS, FAQS } from './constants.tsx';
 
 const App: React.FC = () => {
   const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    const pricingElement = document.getElementById('pricing');
+    if (pricingElement) {
+      pricingElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // URL da capa do ebook atualizada conforme solicitação do usuário
@@ -63,7 +66,6 @@ const App: React.FC = () => {
               alt="Capa do Ebook Guia Anti-CLT" 
               className="w-full h-auto drop-shadow-[0_35px_35px_rgba(251,191,36,0.3)] transform hover:-translate-y-2 transition-transform duration-500 rounded-lg"
               onError={(e) => {
-                // Fallback para uma imagem que represente bem o conteúdo caso a URL falhe
                 e.currentTarget.src = "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800";
               }}
             />

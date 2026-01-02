@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { analyzeFreedomPotential } from '../services/geminiService';
+import { analyzeFreedomPotential } from '../services/geminiService.ts';
 
 const FreedomChat: React.FC = () => {
   const [job, setJob] = useState('');
