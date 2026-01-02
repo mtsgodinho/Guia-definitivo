@@ -7,235 +7,189 @@ import { TESTIMONIALS, BENEFITS, FAQS } from './constants.tsx';
 
 const App: React.FC = () => {
   const scrollToPricing = () => {
-    const pricingElement = document.getElementById('pricing');
-    if (pricingElement) {
-      pricingElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // URL da capa do ebook atualizada conforme solicitação do usuário
   const ebookCoverUrl = "https://i.imgur.com/KiI6NID.png";
 
   return (
-    <div className="relative min-h-screen bg-dark-ebook text-slate-100 selection:bg-yellow-500 selection:text-black font-sans">
-      {/* Fixed Top Countdown */}
-      <div className="bg-yellow-500 text-black py-2 flex justify-center items-center space-x-4 sticky top-0 z-50 shadow-xl">
-        <span className="font-black text-[10px] md:text-xs uppercase tracking-tighter">OFERTA ESPECIAL: O MANUAL QUE VOCÊ GOSTARIA DE TER LIDO</span>
-        <div className="h-4 w-[1px] bg-black/20"></div>
-        <CountdownTimer className="bg-transparent text-black py-0 px-0 scale-75" />
+    <div className="relative min-h-screen bg-[#050505] text-slate-100 selection:bg-orange-500 selection:text-white font-sans overflow-x-hidden">
+      
+      {/* 1. RELÓGIO FIXO TOPO */}
+      <div className="bg-red-600 text-white py-2 flex justify-center items-center space-x-4 sticky top-0 z-[60] shadow-2xl">
+        <span className="font-black text-[9px] md:text-xs uppercase tracking-widest animate-pulse">Atenção: Oferta por tempo limitado!</span>
+        <div className="h-4 w-[1px] bg-white/20"></div>
+        <CountdownTimer className="bg-transparent text-white py-0 px-0 scale-75" />
       </div>
 
-      {/* Floating Timer */}
+      {/* 2. RELÓGIO FLUTUANTE */}
       <CountdownTimer isFloating />
 
       {/* Hero Section */}
-      <header className="relative pt-20 pb-24 px-4 overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-yellow-500/10 to-transparent -z-10 blur-3xl"></div>
+      <header className="relative pt-12 md:pt-20 pb-24 px-4 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-orange-600/10 blur-[120px] rounded-full -z-10"></div>
         
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-7/12 text-center lg:text-left">
-            <span className="inline-block bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 px-4 py-1 rounded-md text-xs font-bold mb-6 tracking-widest uppercase">
-              Guia Definitivo
-            </span>
-            <h1 className="text-4xl md:text-6xl font-black mb-8 leading-[1.1]">
-              Tudo que <span className="text-yellow-500">VOCÊ PRECISA SABER</span> Antes de LARGAR O CLT
+            <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+              <span className="text-[10px] font-black uppercase tracking-widest">Acesso Imediato Liberado</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[1] tracking-tighter">
+              CHEGA DE <span className="text-red-600 underline decoration-red-600">DAR SEU SANGUE</span> PARA O SONHO DOS OUTROS
             </h1>
-            <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed italic border-l-4 border-yellow-500 pl-6 py-2">
-              "Por alguém que por anos se iludiu com o sonho dos outros. Este é o manual que eu gostaria de ter lido antes de tomar a decisão mais importante da minha vida."
+            
+            <p className="text-xl md:text-2xl text-slate-400 mb-10 leading-relaxed italic border-l-8 border-orange-500 pl-6">
+              O manual proibido para quem quer largar o CLT com segurança, estratégia e dinheiro no bolso.
             </p>
             
-            <div className="flex flex-col items-center lg:items-start space-y-4">
-              <CountdownTimer label="O preço sobe em:" className="bg-white/5 border border-white/10 scale-90" />
+            <div className="flex flex-col items-center lg:items-start space-y-6">
               <CTAButton 
-                label="QUERO O MANUAL COMPLETO" 
-                sublabel="Acesso imediato para download"
+                label="QUERO MEU ACESSO AGORA" 
+                sublabel="R$ 19,90 - Preço promocional de lançamento"
                 onClick={scrollToPricing}
               />
-              <div className="flex items-center space-x-4 text-[10px] uppercase font-bold tracking-widest text-slate-500">
-                 <span className="flex items-center">⭐ 4.9/5 AVALIAÇÃO</span>
-                 <span>•</span>
-                 <span>🔒 PAGAMENTO CRIPTOGRAFADO</span>
+              <div className="flex items-center space-x-6 text-[11px] font-black uppercase tracking-tighter text-slate-500">
+                 <span className="flex items-center"><span className="text-orange-500 mr-1 text-base">★</span> 12.432 Alunos</span>
+                 <span className="flex items-center"><span className="text-orange-500 mr-1 text-base">✔</span> Garantia Total</span>
               </div>
             </div>
           </div>
           
-          <div className="lg:w-5/12 relative">
+          <div className="lg:w-5/12 relative group">
             <img 
               src={ebookCoverUrl}
-              alt="Capa do Ebook Guia Anti-CLT" 
-              className="w-full h-auto drop-shadow-[0_35px_35px_rgba(251,191,36,0.3)] transform hover:-translate-y-2 transition-transform duration-500 rounded-lg"
+              alt="Ebook Capa" 
+              className="w-full h-auto drop-shadow-[0_0_80px_rgba(249,115,22,0.3)] transform rotate-3 group-hover:rotate-0 transition-all duration-700 rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800";
               }}
             />
-            <div className="absolute -bottom-4 -left-4 bg-yellow-500 text-black px-6 py-4 rounded-lg font-black text-xl shadow-2xl animate-bounce">
-               -80% OFF
+            <div className="absolute -top-6 -right-6 bg-orange-600 text-white w-24 h-24 rounded-full flex flex-col items-center justify-center font-black text-xl shadow-2xl animate-float border-4 border-white">
+               <span>OFF</span>
+               <span>80%</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Intro Section */}
-      <section className="py-20 bg-white/5 border-y border-white/10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center space-x-3 mb-8">
-            <span className="h-[2px] w-12 bg-yellow-500"></span>
-            <span className="text-yellow-500 font-bold uppercase tracking-widest text-sm">Introdução</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black mb-10 leading-tight">Você não está louco. <br/><span className="text-slate-500">Mas coragem sozinha não paga boleto.</span></h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            <p className="text-slate-400 leading-relaxed">
-              Querer sair do CLT para tentar algo novo é corajoso. É um sentimento que vem batendo na porta há meses. Mas a maioria das pessoas se perde porque confunde vontade com preparo.
-            </p>
-            <p className="text-slate-400 leading-relaxed border-l border-yellow-500/30 pl-8">
-              "Esse guia foi criado para ser o manual que eu gostaria de ter lido antes de sair do meu emprego achando que ia ficar rico do dia para a noite."
-            </p>
+      {/* Intro Section - Dor */}
+      <section className="py-24 bg-white/5 border-y border-white/10 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-black mb-12 uppercase italic tracking-tighter">Até quando você vai aceitar <br/><span className="text-orange-500">migalhas?</span></h2>
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            <div className="bg-black/40 p-10 rounded-3xl border border-white/5">
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Você acorda, pega trânsito, entrega resultados, recebe bronca e no fim do mês o seu salário mal paga a fatura do cartão. 
+                <span className="text-white font-bold block mt-4">Isso não é vida, é sobrevivência.</span>
+              </p>
+            </div>
+            <div className="bg-orange-600 p-10 rounded-3xl text-white">
+              <p className="text-xl font-black italic mb-4">"Eu estive exatamente onde você está agora."</p>
+              <p className="opacity-90 leading-relaxed">
+                Neste guia, eu não te vendo sonhos. Eu te entrego o plano de guerra que eu usei para sair do escritório e faturar o meu salário de um ano em apenas 3 meses.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Chapter 1 */}
+      {/* 3. RELÓGIO MEIO DA PÁGINA */}
+      <section className="py-20 bg-black px-4">
+        <div className="max-w-3xl mx-auto bg-white/5 p-12 rounded-[3rem] border-2 border-dashed border-orange-500/30 flex flex-col items-center">
+          <h3 className="text-2xl font-black mb-6 uppercase text-center italic tracking-widest text-orange-500">O cronômetro não para!</h3>
+          <CountdownTimer className="bg-black/50 border border-white/10 text-orange-500 mb-8" />
+          <CTAButton label="APROVEITAR O DESCONTO" onClick={scrollToPricing} className="w-full md:w-auto" />
+        </div>
+      </section>
+
+      {/* Benefícios */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-black text-center mb-16">Capítulo 1: <span className="text-yellow-500">A Mentira da Liberdade</span></h2>
-          <div className="grid md:grid-cols-3 gap-6">
-             <div className="bg-slate-900/50 p-8 rounded-2xl border border-white/5">
-                <h4 className="text-slate-500 font-bold mb-4 uppercase text-xs tracking-widest">A Ilusão</h4>
-                <p className="text-xl font-bold mb-4 italic">"Liberdade sem renda é prisão com vista."</p>
-                <p className="text-sm text-slate-500">Linda, mas continua sendo prisão. Não pule sem rede.</p>
-             </div>
-             <div className="bg-slate-900/50 p-8 rounded-2xl border border-white/5">
-                <h4 className="text-slate-500 font-bold mb-4 uppercase text-xs tracking-widest">A Realidade</h4>
-                <p className="text-xl font-bold mb-4">Você vai trocar patrão por cliente.</p>
-                <p className="text-sm text-slate-500">E o cliente pode ser mais exigente que qualquer chefe que você já teve.</p>
-             </div>
-             <div className="bg-slate-900/50 p-8 rounded-2xl border border-white/5">
-                <h4 className="text-slate-500 font-bold mb-4 uppercase text-xs tracking-widest">A Verdade</h4>
-                <p className="text-xl font-bold mb-4">Liberdade vem com disciplina.</p>
-                <p className="text-sm text-slate-500">Sem ela, você vira escravo do caos. Empreender é trabalhar diferente, não menos.</p>
-             </div>
+          <h2 className="text-4xl md:text-6xl font-black text-center mb-20 italic">O QUE VOCÊ VAI <span className="text-orange-500">DOMINAR:</span></h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {BENEFITS.map((benefit, i) => (
+              <div key={i} className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-orange-500/50 transition-all group">
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform inline-block">{benefit.icon}</div>
+                <h4 className="text-xl font-black mb-4 uppercase text-orange-500 italic">{benefit.title}</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Chapter 2 - Planning */}
-      <section className="py-24 bg-yellow-500 px-4 text-black">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black text-center mb-16 uppercase italic">Planejamento é o novo coragem</h2>
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-black text-white p-8 rounded-2xl">
-              <div className="text-4xl font-black mb-4 opacity-30">01</div>
-              <h4 className="font-bold text-lg mb-2">Reserva de Emergência?</h4>
-              <p className="text-sm opacity-70">3 a 6 meses é o mínimo absoluto. Menos que isso é se jogar no escuro.</p>
-            </div>
-            <div className="bg-black text-white p-8 rounded-2xl">
-              <div className="text-4xl font-black mb-4 opacity-30">02</div>
-              <h4 className="font-bold text-lg mb-2">Viver sem salário fixo?</h4>
-              <p className="text-sm opacity-70">Faça as contas: aluguel, comida, imprevistos. Multiplique por 6.</p>
-            </div>
-            <div className="bg-black text-white p-8 rounded-2xl">
-              <div className="text-4xl font-black mb-4 opacity-30">03</div>
-              <h4 className="font-bold text-lg mb-2">Fonte de renda ativa?</h4>
-              <p className="text-sm opacity-70">Já testou? Já vendeu algo? Ou sua idéia ainda é só teoria?</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center space-y-6">
-             <CountdownTimer className="bg-black border-2 border-black/20 text-white shadow-xl" label="Vagas com desconto terminam em:" />
-             <CTAButton label="QUERO APRENDER A PLANEJAR" className="bg-black border-slate-800 hover:bg-slate-900 shadow-2xl" />
+      {/* Depoimentos */}
+      <section className="py-24 bg-white/5 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-black text-center mb-16 uppercase italic tracking-tighter">Quem já <span className="text-green-500">pulou do barco</span> com segurança:</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t) => (
+              <div key={t.id} className="bg-black p-8 rounded-3xl border border-white/10 relative">
+                <div className="flex items-center space-x-4 mb-6">
+                  <img src={t.avatar} className="w-14 h-14 rounded-full border-2 border-orange-500" alt={t.name} />
+                  <div>
+                    <h5 className="font-black text-white italic">{t.name}</h5>
+                    <p className="text-[10px] text-orange-500 font-bold uppercase tracking-widest">{t.role}</p>
+                  </div>
+                </div>
+                <p className="text-slate-400 italic leading-relaxed">"{t.content}"</p>
+                <div className="absolute top-4 right-8 text-6xl text-white/5 font-black">"</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Real Story */}
-      <section className="py-24 px-4 bg-slate-950">
-        <div className="max-w-3xl mx-auto">
-          <span className="text-yellow-500 font-bold text-xs uppercase tracking-widest mb-4 block">História Real</span>
-          <h2 className="text-3xl md:text-4xl font-black mb-10">O dia que meu mundo virou de cabeça pra baixo</h2>
-          <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
-            <p>Trabalhei quase 7 anos em uma empresa. Acreditei na cultura, vesti a camisa, cumpri metas.</p>
-            <div className="bg-red-600/10 border-l-4 border-red-600 p-8 my-10">
-               <h3 className="text-white font-black text-2xl">650 pessoas demitidas sem nada.</h3>
-            </div>
-            <p>Foi nesse baque que decidi: <span className="text-white font-bold">nunca mais eu ia depender de ninguém pra viver.</span></p>
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics Section */}
+      {/* IA Section */}
       <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-20 uppercase">Os números que <span className="text-yellow-500 underline decoration-2 underline-offset-8">ninguém quer te mostrar</span></h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-8">
-              <div className="text-5xl font-black text-yellow-500 mb-2">73%</div>
-              <p className="text-xs uppercase font-bold tracking-widest text-slate-500">Desistem no 1º ano</p>
-            </div>
-            <div className="p-8">
-              <div className="text-5xl font-black text-yellow-500 mb-2">85%</div>
-              <p className="text-xs uppercase font-bold tracking-widest text-slate-500">Sem reserva adequada</p>
-            </div>
-            <div className="p-8">
-              <div className="text-5xl font-black text-yellow-500 mb-2">3x</div>
-              <p className="text-xs uppercase font-bold tracking-widest text-slate-500">Mais trabalho no início</p>
-            </div>
-            <div className="p-8">
-              <div className="text-5xl font-black text-yellow-500 mb-2">40%</div>
-              <p className="text-xs uppercase font-bold tracking-widest text-slate-500">Voltam para o CLT</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Diagnostic */}
-      <section className="py-24 bg-dark-ebook px-4 relative">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
         <FreedomChat />
       </section>
 
-      {/* Final Offer */}
-      <section id="pricing" className="py-32 px-4 text-center bg-white text-black relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-20 opacity-5 pointer-events-none">
-           <div className="text-[200px] font-black leading-none">CLT</div>
-        </div>
+      {/* Oferta Final */}
+      <section id="pricing" className="py-32 px-4 bg-orange-600 relative overflow-hidden text-black">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
-        <div className="max-w-3xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase tracking-tighter italic">Saia do CLT com direção</h2>
-          <p className="text-xl text-slate-600 mb-12">Você não precisa de um milagre. <br/><span className="text-black font-black uppercase">Você precisa de um plano.</span></p>
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <h2 className="text-5xl md:text-8xl font-black mb-8 uppercase italic tracking-tighter leading-none">ÚLTIMA CHAMADA</h2>
+          <p className="text-xl md:text-2xl font-bold mb-12 uppercase tracking-tighter">O preço vai subir. Não diga que eu não avisei.</p>
           
-          <div className="bg-slate-100 p-8 md:p-12 rounded-[2rem] shadow-2xl mb-12 border-2 border-black transform hover:scale-[1.02] transition-transform">
-             <div className="text-slate-400 line-through text-2xl font-bold mb-2">De R$ 97,00</div>
-             <div className="text-6xl md:text-8xl font-black text-orange-600 mb-4 tracking-tighter">R$ 19,97</div>
-             <p className="font-bold text-sm text-slate-500 mb-8 uppercase tracking-widest">Apenas Hoje • Acesso Vitalício</p>
+          <div className="bg-black text-white p-12 md:p-16 rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.5)] border-4 border-white/10 transform -rotate-1">
+             <div className="text-slate-500 line-through text-2xl font-bold mb-4">De R$ 197,00</div>
+             <div className="flex justify-center items-center space-x-4 mb-8">
+                <span className="text-2xl font-bold opacity-50 uppercase tracking-widest">Por apenas:</span>
+                <div className="text-7xl md:text-9xl font-black text-orange-500 tracking-tighter">R$ 19,90</div>
+             </div>
              
-             <div className="flex flex-col items-center space-y-6">
-                <CountdownTimer className="bg-orange-600 border border-orange-700 text-white animate-pulse" label="O desconto expira em:" />
+             <div className="flex flex-col items-center space-y-8">
+                <CountdownTimer className="bg-orange-600/10 border border-orange-600/30 text-orange-500 scale-125" label="OFERTA EXPIRA EM:" />
                 <CTAButton 
-                  label="EU QUERO MINHA LIBERDADE" 
-                  className="w-full text-2xl py-8 shadow-[0_20px_50px_rgba(249,115,22,0.4)]"
+                  label="LIBERAR MEU ACESSO VITALÍCIO" 
+                  className="w-full text-2xl md:text-4xl py-10 bg-orange-600 hover:bg-orange-500 animate-pulse border-orange-800"
                 />
              </div>
              
-             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-black uppercase text-slate-400">
-                <div className="flex flex-col items-center"><span className="text-lg mb-1">📖</span> Ebook PDF</div>
-                <div className="flex flex-col items-center"><span className="text-lg mb-1">📊</span> Planilhas</div>
-                <div className="flex flex-col items-center"><span className="text-lg mb-1">✅</span> Checklists</div>
-                <div className="flex flex-col items-center"><span className="text-lg mb-1">🔄</span> Atualizações</div>
+             <div className="mt-12 flex flex-wrap justify-center gap-6 text-[10px] md:text-xs font-black uppercase text-slate-500 tracking-widest">
+                <span className="flex items-center">✅ PDF COMPLETO</span>
+                <span className="flex items-center">✅ 3 BÔNUS EXCLUSIVOS</span>
+                <span className="flex items-center">✅ ACESSO PELO CELULAR</span>
              </div>
           </div>
-          
-          <p className="text-slate-400 text-sm italic">7 dias de garantia incondicional. Sem perguntas.</p>
         </div>
       </section>
 
-      {/* Footer Timer */}
-      <footer className="bg-black py-20 px-4 border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex flex-col items-center space-y-12">
-          <div className="text-center">
-            <h3 className="text-yellow-500 font-black text-2xl uppercase mb-6 italic tracking-tighter">Sua última chance de mudar o jogo</h3>
-            <CountdownTimer className="bg-yellow-500/10 border-yellow-500/20 text-yellow-500 scale-110" />
+      {/* 4. RELÓGIO RODAPÉ */}
+      <footer className="bg-black py-24 px-4 border-t border-white/5 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h4 className="text-xl font-black uppercase italic text-orange-500 mb-8">Ainda em dúvida? O tempo está acabando...</h4>
+          <CountdownTimer className="bg-white/5 border border-white/10 text-white mb-12 scale-110" />
+          <div className="flex justify-center space-x-8 mb-12">
+            <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" className="h-8 grayscale opacity-50" alt="Paypal" />
+            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" className="h-8 grayscale opacity-50" alt="Visa" />
+            <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" className="h-8 grayscale opacity-50" alt="Mastercard" />
           </div>
-          <p className="text-slate-600 text-xs">© 2024 Guia Anti-CLT. Todos os direitos reservados.</p>
+          <p className="text-slate-700 text-[10px] uppercase font-bold tracking-[0.3em]">© 2024 - GUIA ANTI-CLT - TODOS OS DIREITOS RESERVADOS</p>
         </div>
       </footer>
     </div>
