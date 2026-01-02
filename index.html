@@ -15,39 +15,31 @@
       scroll-behavior: smooth;
       background-color: #121212;
       margin: 0;
+      overflow-x: hidden;
     }
-    .gold-text {
-      color: #FBBF24;
-    }
-    .bg-dark-ebook {
-      background-color: #121212;
-    }
-    .gold-border {
-      border-color: #FBBF24;
-    }
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    .gold-text { color: #FBBF24; }
+    .bg-dark-ebook { background-color: #121212; }
     
-    /* Estilos do Loader */
     #initial-loader {
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: #121212;
-      transition: opacity 0.5s ease-out, visibility 0.5s;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
     }
     #initial-loader.hidden-loader {
       opacity: 0;
       visibility: hidden;
     }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float { animation: float 3s ease-in-out infinite; }
   </style>
 <script type="importmap">
 {
@@ -63,14 +55,14 @@
 </script>
 </head>
 <body class="bg-dark-ebook text-slate-100">
-  <!-- Tela de Carregamento Controlada -->
+  <!-- Loader Robusto -->
   <div id="initial-loader">
-    <div class="flex flex-col items-center space-y-4">
-      <div class="animate-pulse text-yellow-500 font-bold uppercase tracking-widest text-xs">
-        Carregando sua liberdade...
+    <div class="flex flex-col items-center space-y-6">
+      <div class="animate-pulse text-yellow-500 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
+        Preparando sua transição...
       </div>
-      <div class="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
-        <div id="loader-bar" class="h-full bg-yellow-500 transition-all duration-[2000ms] ease-linear w-0"></div>
+      <div class="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden">
+        <div id="loader-bar" class="h-full bg-yellow-500 transition-all duration-[2000ms] ease-out w-0"></div>
       </div>
     </div>
   </div>
@@ -78,20 +70,25 @@
   <div id="root"></div>
 
   <script>
-    // Inicia a barra de progresso visual
-    setTimeout(() => {
-      document.getElementById('loader-bar').style.width = '100%';
-    }, 50);
+    // Executa assim que o script for lido
+    (function() {
+      const loaderBar = document.getElementById('loader-bar');
+      const loaderContainer = document.getElementById('initial-loader');
 
-    // Esconde o loader após exatamente 2 segundos
-    setTimeout(() => {
-      const loader = document.getElementById('initial-loader');
-      loader.classList.add('hidden-loader');
-      // Remove do DOM após a transição para não interferir
+      // Inicia animação da barra imediatamente
+      requestAnimationFrame(() => {
+        if (loaderBar) loaderBar.style.width = '100%';
+      });
+
+      // Garante a remoção após 2 segundos (2000ms)
       setTimeout(() => {
-        loader.remove();
-      }, 500);
-    }, 2000);
+        if (loaderContainer) {
+          loaderContainer.classList.add('hidden-loader');
+          // Remove do DOM após o fade-out para performance
+          setTimeout(() => loaderContainer.remove(), 800);
+        }
+      }, 2000);
+    })();
   </script>
 </body>
 </html>
