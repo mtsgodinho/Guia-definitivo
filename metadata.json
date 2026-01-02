@@ -1,0 +1,8 @@
+{
+  "name": "Guia de Transição CLT para a Liberdade",
+  "description": "Uma página de vendas de alta conversão para o ebook que ensina o passo a passo para sair do regime CLT e conquistar a liberdade financeira e geográfica.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
