@@ -16,9 +16,8 @@
       background-color: #121212;
       margin: 0;
       overflow-x: hidden;
+      color: white;
     }
-    .gold-text { color: #FBBF24; }
-    .bg-dark-ebook { background-color: #121212; }
     
     #initial-loader {
       position: fixed;
@@ -28,7 +27,7 @@
       align-items: center;
       justify-content: center;
       background-color: #121212;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+      transition: opacity 0.6s ease-out, visibility 0.6s;
     }
     #initial-loader.hidden-loader {
       opacity: 0;
@@ -41,7 +40,8 @@
     }
     .animate-float { animation: float 3s ease-in-out infinite; }
   </style>
-<script type="importmap">
+
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19.0.0",
@@ -54,12 +54,12 @@
 }
 </script>
 </head>
-<body class="bg-dark-ebook text-slate-100">
-  <!-- Loader Robusto -->
+<body class="bg-[#121212]">
+  <!-- Loader de 2 Segundos -->
   <div id="initial-loader">
     <div class="flex flex-col items-center space-y-6">
       <div class="animate-pulse text-yellow-500 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
-        Preparando sua transição...
+        CARREGANDO SUA LIBERDADE...
       </div>
       <div class="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden">
         <div id="loader-bar" class="h-full bg-yellow-500 transition-all duration-[2000ms] ease-out w-0"></div>
@@ -69,26 +69,23 @@
 
   <div id="root"></div>
 
-  <script>
-    // Executa assim que o script for lido
-    (function() {
-      const loaderBar = document.getElementById('loader-bar');
-      const loaderContainer = document.getElementById('initial-loader');
-
-      // Inicia animação da barra imediatamente
-      requestAnimationFrame(() => {
-        if (loaderBar) loaderBar.style.width = '100%';
-      });
-
-      // Garante a remoção após 2 segundos (2000ms)
+  <script type="module">
+    // Garantia absoluta de remoção do loader
+    window.addEventListener('DOMContentLoaded', () => {
+      const bar = document.getElementById('loader-bar');
+      const loader = document.getElementById('initial-loader');
+      
+      // Inicia barra
+      if (bar) bar.style.width = '100%';
+      
+      // Força sumir em 2 segundos
       setTimeout(() => {
-        if (loaderContainer) {
-          loaderContainer.classList.add('hidden-loader');
-          // Remove do DOM após o fade-out para performance
-          setTimeout(() => loaderContainer.remove(), 800);
+        if (loader) {
+          loader.classList.add('hidden-loader');
+          setTimeout(() => loader.remove(), 600);
         }
       }, 2000);
-    })();
+    });
   </script>
 </body>
 </html>
